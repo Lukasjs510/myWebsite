@@ -23,6 +23,13 @@ export class AddJob extends Component {
     const { title, company, start, end, description } = this.state;
     const workexp = { title, company, start, end, description };
     this.props.addWorkexp(workexp);
+    this.setState({
+      title: "",
+      company: "",
+      start: "",
+      end: "",
+      description: "",
+    });
   };
 
   render() {
