@@ -1,7 +1,7 @@
 import axios from "axios";
-import { createMessage } from "./messages";
+import { createMessage, returnErrors } from "./messages";
 
-import { GET_WORKEXP, DELETE_WORKEXP, ADD_WORKEXP, GET_ERRORS } from "./types";
+import { GET_WORKEXP, DELETE_WORKEXP, ADD_WORKEXP } from "./types";
 
 // GET WORKEXP
 export const getWorkexp = () => (dispatch) => {
@@ -13,7 +13,9 @@ export const getWorkexp = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // DELETE WORKEXP
@@ -27,7 +29,9 @@ export const deleteWorkexp = (id) => (dispatch) => {
         payload: id,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // ADD WORKEXP
@@ -41,14 +45,7 @@ export const addWorkexp = (workexp) => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status,
-      };
-      dispatch({
-        type: GET_ERRORS,
-        payload: errors,
-      });
-    });
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
