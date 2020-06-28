@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getWorkexp, deleteWorkexp } from "../../actions/workexp";
 
-export class jobHistory extends Component {
+export class JobHistory extends Component {
   static propTypes = {
     workexp: PropTypes.array.isRequired,
     getWorkexp: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ export class jobHistory extends Component {
   render() {
     return (
       <Fragment>
-        <h4>Job History List</h4>
+        <h4>Work Experince</h4>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -60,5 +60,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getWorkexp, deleteWorkexp })(
-  jobHistory
+  JobHistory
 );
