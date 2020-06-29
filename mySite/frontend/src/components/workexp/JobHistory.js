@@ -43,6 +43,7 @@ export class JobHistory extends Component {
                     onClick={this.props.deleteWorkexp.bind(this, workexp.id)}
                     className="btn btn-danger btn-sm"
                   >
+                    {" "}
                     Delete
                   </button>
                 </td>

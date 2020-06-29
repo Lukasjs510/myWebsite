@@ -19,11 +19,15 @@ export class Alerts extends Component {
       if (error.msg.end) alert.error(`end: ${error.msg.end.join()}`);
       if (error.msg.description)
         alert.error(`description: ${error.msg.description.join()}`);
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
+      if (error.msg.username) alert.error(error.msg.username.join());
     }
 
     if (message !== prevProps.message) {
       if (message.workexpDeleted) alert.success(message.workexpDeleted);
       if (message.workexpAdded) alert.success(message.workexpAdded);
+      if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
     }
   }
 
